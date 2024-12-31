@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar-component-container">
+    <div class="container-fluid">
+        <!-- Button to toggle sidebar -->
+        <!-- <button mat-button class="navbar-toggler" type="button" (click)="onToggleSidebar()">
+            <span class="navbar-toggler-icon"></span>
+        </button> -->
+
+        <!-- Other navbar content -->
+        <div class="nav_content">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <div class="nav_btn" (click)="toggleDropdown()">
+                        <i class="material-icons">person</i>
+                        <span class="d-md-block ml-1">
+                            <b>{{ userName }}</b>
+                            <i class="material-icons">expand_more</i>
+                        </span>
+                    </div>
+                    <div class="dropdown-menu" [ngClass]="{ open: dropdownOpen }">
+                        <a class="dropdown-item" (click)="changePassword()">Change Password</a>
+                        <a class="dropdown-item" (click)="doLogout()">Log Out</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

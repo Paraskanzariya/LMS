@@ -1,14 +1,17 @@
-<div class="sidebar" [class.open]="isShow">
+<div class="sidebar" [ngClass]="{ open: isShow, closed: !isShow }" id="main-sidebar">
     <div class="sidebar-header">
+        <!-- <h3 class="lms-name" *ngIf="isShow">LMS</h3> -->
+         <img class="logo" [ngClass]="{ 'small-logo': !isShow }" src="../../../assets/img/download.png" alt="logo">
         <button class="toggle-btn" (click)="toggleSidebar()">
-            <mat-icon>{{ isShow ? 'chevron_left' : 'chevron_right' }}</mat-icon>
+            <mat-icon>{{ isShow ? 'chevron_left' : 'chevron_right' }}</mat-icon> <!-- Toggle icon -->
         </button>
     </div>
+
     <ul class="menu">
         <li *ngFor="let item of menuItems">
-            <a [routerLink]="item.link">
+            <a [routerLink]="item.link" routerLinkActive="active">
                 <mat-icon>{{ item.icon }}</mat-icon>
-                <span>{{ item.label }}</span>
+                <span *ngIf="isShow">{{ item.label }}</span>
             </a>
         </li>
     </ul>

@@ -21,7 +21,7 @@ export class DashboardComponent implements OnInit{
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
 
-  isLoading: boolean = true;
+  isLoading: boolean = false;
   loadingMessage: string = 'Fetching data, please wait...';
 
   dashboardItems: { value: number, label: string }[] = [
@@ -37,10 +37,11 @@ export class DashboardComponent implements OnInit{
   dataSource: MatTableDataSource<Loan> = new MatTableDataSource<Loan>();
 
   constructor() {
+    this.isLoading = true;
     setTimeout(() => {
       this.initializeTableData();
       this.isLoading = false; // Turn off loader when data is loaded
-    }, 2000); 
+    }, 1500); 
     // const loans: Loan[] = [
     //   { loanId: 101, customerName: 'John Doe', loanType: 'Personal Loan', lastPayment: '2023-01-15', paymentDue: '2023-02-15', loanStatus: 'Active' },
     //   { loanId: 102, customerName: 'Jane Smith', loanType: 'Home Loan', lastPayment: '2023-02-01', paymentDue: '2023-03-01', loanStatus: 'Active' },

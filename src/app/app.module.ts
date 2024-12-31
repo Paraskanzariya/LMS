@@ -11,6 +11,12 @@ import { FullLayoutComponent } from './shared/layouts/full-layout/full-layout.co
 import { BlankLayoutComponent } from './shared/layouts/blank-layout/blank-layout.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { PageLoaderComponent } from './shared/page-loader/page-loader.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -18,14 +24,20 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     DashboardComponent,
     FullLayoutComponent,
     BlankLayoutComponent,
-    SidebarComponent
+    SidebarComponent,
+    PageLoaderComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MatTableModule,
     MatPaginatorModule,
-    MatIconModule
+    MatIconModule,
+    BrowserAnimationsModule,
+    MatButtonModule, 
+    MatFormFieldModule, 
+    MatCardModule 
   ],
   providers: [
     provideAnimationsAsync()

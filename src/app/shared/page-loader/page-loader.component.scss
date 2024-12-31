@@ -1,0 +1,40 @@
+/* Styling for the spinner overlay */
+.spinner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    /* Dark transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1051;
+    /* Make sure the spinner is on top of other content */
+}
+
+.loader {
+    margin-left: 12%;
+}
+
+/* Styling for the spinner icon */
+.app-loader {
+    font-size: 45px;
+    /* Adjust the size of the spinner */
+    animation: spin 1s linear infinite;
+    /* Spin animation */
+    color: #1d8cd6;
+    /* Color of the spinner */
+}
+
+/* Add animation for the spinner */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
