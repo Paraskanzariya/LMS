@@ -1,14 +1,14 @@
-$primary-color: #4caf50;
-$secondary-color: #ffffff;
-$error-color: #ff5252;
-$gradient-bg: linear-gradient(135deg, #edf2f7, #4caf50);
-$background-gradient: linear-gradient(135deg, #edf2f7, #81c784); // Soft light gradient for the background
-$font-family: 'Poppins', sans-serif;
-$text-color: #000000; // Updated font color to black
-$text-field-border-color: rgba(255, 255, 255, 0.5);
-$button-color: #81c784;
-$button-hover-color: #66bb6a;
+$primary-color: #f9a825; // Light Gold for primary color
+$secondary-color: #ffffff; // White for text and elements
+$error-color: #ff5252; // Red for errors
+$gradient-bg: linear-gradient(135deg, #ffffff, #f9a825); // Light gold gradient for background
+$font-family: 'Poppins', sans-serif; // Font family
+$text-color: #000000; // Dark color for text
+$text-field-border-color: rgba(255, 255, 255, 0.5); // Light gray for text fields
+$button-color: #f9a825; // Gold background color for the button
+$button-hover-color: #fbc02d; // Darker gold for button hover effect
 
+// Login Page Styles
 .login-page {
     display: flex;
     justify-content: center;
@@ -90,7 +90,7 @@ $button-hover-color: #66bb6a;
                         outline: none;
                         background: rgba(255, 255, 255, 0.2);
                         box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.3);
-                        border: 1px solid $primary-color;
+                        border: 1px solid #f9a825;
                     }
 
                     &.is-invalid {
@@ -129,18 +129,19 @@ $button-hover-color: #66bb6a;
                 width: 100%; // Match the width of input fields
                 margin-top: 1rem; // Adjust spacing from the password input
                 padding: 0.8rem;
-                background: $button-color;
-                color: $text-color;
+                background: $button-color; // Gold background color
+                color: $text-color; // Dark text color for readability
                 font-size: 1rem;
+                font-weight: 600;
                 border: none;
                 border-radius: 10px;
                 cursor: pointer;
                 transition: all 0.3s ease-in-out;
 
                 &:hover {
-                    background: $button-hover-color;
+                    background: $button-hover-color; // Darker gold on hover
                     box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.3);
-                    transform: scale(1.05);
+                    transform: scale(1.05); // Slight scaling effect
                 }
 
                 &:disabled {
@@ -161,15 +162,17 @@ $button-hover-color: #66bb6a;
                 justify-content: center; // Center align the links horizontally
             
                 a {
-                    color: $primary-color; // Color for the links (matching the primary button color)
+                    color: $text-color; // Color for the links (matching the gold button color)
                     font-size: 0.875rem; // Smaller text for the links
                     text-decoration: none; // Remove underline
                     margin-right: 1rem; // Spacing between the two links
-                    transition: color 0.3s ease;
+                    transition: color 0.3s ease, font-weight 0.3s ease, transform 0.3s ease; // Transition for color, weight, and transform
             
                     &:hover {
-                        color: $text-color; // Hover color (light gold for emphasis)
-                        text-decoration: underline;
+                        color: $primary-color; // Hover color (light gold for emphasis)
+                        font-weight: 700; // Bold the text
+                        text-decoration: underline; // Underline the text
+                        transform: translateY(-2px); // Slight lift effect for emphasis
                     }
             
                     &:last-child {
@@ -177,11 +180,27 @@ $button-hover-color: #66bb6a;
                     }
                 }
             }            
+
+            .back-to-login {
+                margin-top: 1.5rem;
+                text-align: center;
+
+                a {
+                    color: $primary-color;
+                    font-size: 0.875rem;
+                    text-decoration: none;
+
+                    &:hover {
+                        color: #f39c12; // Gold on hover
+                        text-decoration: underline;
+                    }
+                }
+            }
         }
     }
 }
 
-/* Override ngx-toastr styles for custom animations */
+// Override ngx-toastr styles for custom animations
 .toast-success,
 .toast-error,
 .toast-warning,
