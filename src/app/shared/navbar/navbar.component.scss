@@ -5,12 +5,8 @@
     top: 0;
     right: 0;
     left: 0;
-    /* Adjusted this line to make it fixed across the entire width */
     width: 100%;
     position: relative;
-    /* Ensures the navbar spans the full width of the screen */
-    // background-color: #f7f8f8;  // Optional background color
-    // box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);  // Optional shadow for the navbar
 
     .nav_content {
         display: flex;
@@ -19,7 +15,7 @@
         padding: 0 15px;
 
         .navbar-nav {
-            margin-left: auto; // Aligns the nav items to the right
+            margin-left: auto;
             display: flex;
             align-items: center;
             list-style: none;
@@ -30,56 +26,49 @@
                 .nav_btn {
                     display: flex;
                     align-items: center;
-                    background: #3ab89f;
-                    /* Primary background color */
-                    color: #080808;
-                    /* Text color for normal state */
+                    background: #1f1f1f; // Sidebar matching lighter black background
+                    color: #f5f5f5; // Sidebar matching lighter white text
                     padding: 10px 15px;
                     border-radius: 6px;
                     cursor: pointer;
-                    transition: color 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+                    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 
                     i {
                         font-size: 20px;
                         margin-right: 5px;
-                        color: #080808;
-                        /* Icon color */
+                        color: #f5f5f5; // Icon matches lighter white text
                         transition: transform 0.3s ease;
                     }
 
                     b {
                         font-size: 16px;
                         margin-right: 5px;
-                        color: #0e0d0d;
-                        /* Text color for b element */
+                        color: #f5f5f5; // Text matches lighter white
                     }
 
-                    &:hover {
-                        background: #2c9c7b;
-                        /* Darker shade for hover background */
-                        color: #fff;
-                        /* Keep text color white on hover */
-                        // transform: scale(1.05);
-                        /* Optional: adds a subtle scaling effect on hover */
-                    }
+                    // &:hover {
+                    //     background: linear-gradient(145deg, #d4af37, #f9d774); // Sidebar matching lighter gold hover
+                    //     color: #1f1f1f; // Sidebar matching lighter black text
+                    // }
                 }
 
+                // Dropdown menu inside nav-item
                 .dropdown-menu {
-                    background: #fff;
-                    border: 1px solid rgba(0, 0, 0, 0.1);
+                    background: #1f1f1f; // Sidebar matching lighter black dropdown background
+                    border: 1px solid rgba(255, 255, 255, 0.1); // Subtle border
                     border-radius: 4px;
-                    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+                    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); // Subtle dropdown shadow
                     position: absolute;
                     top: calc(100% + 2px);
-                    right: 0; // Keeps dropdown aligned to the right
-                    min-width: 160px;
+                    right: 0;
+                    min-width: 200px;
                     padding: 5px 0;
                     opacity: 0;
                     visibility: hidden;
                     transform: translateY(-20px) scale(0.95);
                     transform-origin: top right;
                     transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                    z-index: 50; // Ensure the dropdown appears above other content
+                    z-index: 50;
 
                     &.open {
                         opacity: 1;
@@ -91,27 +80,42 @@
                         display: block;
                         padding: 10px 20px;
                         font-size: 14px;
-                        color: #333;
-                        width: 130px;
+                        color: #f5f5f5; // Lighter white text
                         cursor: pointer;
                         transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 
                         &:hover {
-                            background: #38bb94;
-                            color: #fff;
+                            background: linear-gradient(145deg, #d4af37, #f9d774); // Sidebar matching lighter gold hover
+                            color: #1f1f1f; // Sidebar matching lighter black text
                             transform: translateX(5px);
                         }
                     }
                 }
+
+                &:hover .dropdown-menu,
+                .nav_btn:hover+.dropdown-menu {
+                    opacity: 1;
+                    visibility: visible;
+                    transform: translateY(0) scale(1);
+                }
             }
 
-            .nav-item:hover .dropdown-menu,
-            .nav_btn:hover+.dropdown-menu {
-                opacity: 1;
-                visibility: visible;
-                transform: translateY(0) scale(1);
-            }
+            // Active nav-item styles
+            .nav-item.active {
+                .nav_btn {
+                    background: linear-gradient(145deg, #c9a134, #e8c766); // Sidebar matching lighter gold active background
+                    color: #1f1f1f; // Lighter black text
+                    font-weight: bold;
 
+                    i {
+                        color: #1f1f1f; // Match icon color with text
+                    }
+
+                    b {
+                        color: #1f1f1f; // Match bold text color with background
+                    }
+                }
+            }
         }
     }
 

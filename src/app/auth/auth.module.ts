@@ -1,12 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-
+import { LoginComponent } from './login/login.component';
+import { RouterModule } from '@angular/router';
+import { AuthRoutes } from './auth.routing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [LoginComponent, ResetPasswordComponent],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    RouterModule.forChild(AuthRoutes),
+    FormsModule,
+    ReactiveFormsModule,
+    SharedModule
+  ],
 })
-export class AuthModule { }
+export class AuthModule {}

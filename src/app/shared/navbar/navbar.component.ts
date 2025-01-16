@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -11,7 +12,7 @@ export class NavbarComponent {
   dropdownOpen: boolean = false; // Dropdown menu state
   userName: string = 'Paras Kanzariya'; // Replace with dynamic value
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   openCloseSidebar(): void {
     this.isShowSidebar = !this.isShowSidebar; // Toggle sidebar state
@@ -31,11 +32,20 @@ export class NavbarComponent {
 
   changePassword(): void {
     // Handle change password functionality
+    console.log('Change password function triggered');
+    // setTimeout(() => {
+      console.log('Changing password operation is happening');
+      this.router.navigateByUrl('/auth/reset-password');
+    // }, 0);
   }
 
-  doLogout(): void {
-    // Handle logout functionality
-  }
+  logout(): void {
+    console.log('Logout function triggered');
+    setTimeout(() => {
+      console.log('Logout operation is happening');
+      this.router.navigateByUrl('/login');
+    }, 0);
+  }  
 
   private updateSidebarStyles(): void {
     const sidebar = document.getElementById('main-sidebar');

@@ -1,0 +1,46 @@
+<div class="login-page">
+    <div class="glass-container">
+        <div class="logo">
+            <img src="../../../assets/img/LMS1.png" alt="LMS Logo" />
+            <h1>Loan Management System</h1>
+        </div>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+            <h2>Welcome Back!</h2>
+            <p>Manage your loans efficiently.</p>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" formControlName="email" placeholder="Enter your email"
+                    [ngClass]="{ 'is-invalid': isControlInvalid('email') }" />
+                <small *ngIf="isControlInvalid('email')" class="error">
+                    {{ getErrorMessage('email') }}
+                </small>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="password-container">
+                    <input [type]="passwordFieldType" id="password" formControlName="password"
+                        placeholder="Enter your password" [ngClass]="{ 'is-invalid': isControlInvalid('password') }" />
+                    <i class="toggle-password" (click)="togglePasswordVisibility()">
+                        {{ passwordFieldType === 'password' ? '👁️' : '🙈' }}
+                    </i>
+                </div>
+                <small *ngIf="isControlInvalid('password')" class="error">
+                    {{ getErrorMessage('password') }}
+                </small>
+            </div>
+
+            <button class="login-btn" type="submit" [disabled]="!loginForm.valid || isSubmitting">
+                <span *ngIf="!isSubmitting">Login</span>
+                <app-button-loader *ngIf="isSubmitting" [isLoading]="isSubmitting"></app-button-loader>
+            </button>
+
+            <!-- Forgot Password and Register Links -->
+            <div class="additional-links">
+                <a href="/auth/reset-password" class="forgot-password">Forgot Password?</a>
+                <a href="/register" class="register">Create an account</a>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,252 @@
+$primary-color: #4caf50;
+$secondary-color: #ffffff;
+$error-color: #ff5252;
+$gradient-bg: linear-gradient(135deg, #edf2f7, #4caf50);
+$background-gradient: linear-gradient(135deg, #edf2f7, #81c784); // Soft light gradient for the background
+$font-family: 'Poppins', sans-serif;
+$text-color: #000000; // Updated font color to black
+$text-field-border-color: rgba(255, 255, 255, 0.5);
+$button-color: #81c784;
+$button-hover-color: #66bb6a;
+
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: $gradient-bg;
+    overflow: hidden;
+    font-family: $font-family;
+
+    &::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.15), transparent 70%);
+        animation: float-bg 6s infinite alternate ease-in-out;
+        pointer-events: none;
+    }
+
+    .glass-container {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 20px;
+        padding: 0rem 3rem 3rem 3rem;
+        width: 100%;
+        max-width: 400px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        text-align: center;
+
+        .logo {
+            margin-bottom: 2rem;
+
+            img {
+                width: 130px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+                color: $text-color;
+                text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            }
+        }
+
+        .login-form {
+            h2 {
+                margin-bottom: 1rem;
+                font-size: 1.6rem;
+                color: $text-color;
+            }
+
+            p {
+                margin-bottom: 2rem;
+                color: $text-color;
+            }
+
+            .form-group {
+                margin-bottom: 1.5rem;
+                text-align: left;
+
+                label {
+                    display: block;
+                    font-weight: 600;
+                    margin-bottom: 0.5rem;
+                    color: $text-color;
+                }
+
+                input {
+                    width: 93%;
+                    padding: 0.8rem;
+                    border: 1px solid $text-field-border-color;
+                    border-radius: 10px;
+                    background: rgba(255, 255, 255, 0.1);
+                    color: $text-color;
+                    font-size: 1rem;
+                    transition: all 0.3s;
+
+                    &:focus {
+                        outline: none;
+                        background: rgba(255, 255, 255, 0.2);
+                        box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.3);
+                        border: 1px solid $primary-color;
+                    }
+
+                    &.is-invalid {
+                        border: 1px solid $error-color;
+                    }
+                }
+
+                .error {
+                    color: $error-color;
+                    font-size: 0.875rem;
+                }
+
+                .password-container {
+                    position: relative;
+
+                    input {
+                        width: calc(100% - 2rem);
+                        /* Adjust width to accommodate icon */
+                        display: inline-block;
+                    }
+
+                    .toggle-password {
+                        position: absolute;
+                        right: 1rem;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        cursor: pointer;
+                        font-size: 1.2rem;
+                        color: $text-color;
+                    }
+                }
+            }
+
+            .login-btn {
+                display: block; // Ensure it behaves like the input fields
+                width: 100%; // Match the width of input fields
+                margin-top: 1rem; // Adjust spacing from the password input
+                padding: 0.8rem;
+                background: $button-color;
+                color: $text-color;
+                font-size: 1rem;
+                border: none;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+
+                &:hover {
+                    background: $button-hover-color;
+                    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.3);
+                    transform: scale(1.05);
+                }
+
+                &:disabled {
+                    background: rgba(255, 255, 255, 0.1);
+                    cursor: not-allowed;
+
+                    &:hover {
+                        background: rgba(255, 255, 255, 0.1);
+                        box-shadow: none;
+                        transform: none;
+                    }
+                }
+            }
+
+            .additional-links {
+                margin-top: 1.5rem; // Spacing between the login button and the links
+                display: flex;
+                justify-content: center; // Center align the links horizontally
+            
+                a {
+                    color: $primary-color; // Color for the links (matching the primary button color)
+                    font-size: 0.875rem; // Smaller text for the links
+                    text-decoration: none; // Remove underline
+                    margin-right: 1rem; // Spacing between the two links
+                    transition: color 0.3s ease;
+            
+                    &:hover {
+                        color: $text-color; // Hover color (light gold for emphasis)
+                        text-decoration: underline;
+                    }
+            
+                    &:last-child {
+                        margin-right: 0; // Remove margin from the last link
+                    }
+                }
+            }            
+        }
+    }
+}
+
+/* Override ngx-toastr styles for custom animations */
+.toast-success,
+.toast-error,
+.toast-warning,
+.toast-info {
+    position: fixed;
+    top: 20px;
+    /* Adjust as needed */
+    right: 20px;
+    /* Start from the right */
+    z-index: 9999;
+    animation: slideInRight 0.5s forwards, slideOutRight 1s 4s forwards;
+    opacity: 0;
+}
+
+/* Slide in from the right */
+@keyframes slideInRight {
+    0% {
+        transform: translateX(100%);
+        /* Off-screen */
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        /* On-screen */
+        opacity: 1;
+    }
+}
+
+/* Slide out to the right */
+@keyframes slideOutRight {
+    0% {
+        transform: translateX(0);
+        /* Stay in place */
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(100%);
+        /* Off-screen */
+        opacity: 0;
+    }
+}
+
+/* Slide out to the left (for future use) */
+@keyframes slideOutLeft {
+    0% {
+        transform: translateX(0);
+        /* Normal position */
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(-100%);
+        /* Off-screen to the left */
+        opacity: 0;
+    }
+}
+
+@keyframes float-bg {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-50px);
+    }
+}

@@ -2,32 +2,22 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
-
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Already includes animations
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { FullLayoutComponent } from './shared/layouts/full-layout/full-layout.component';
-import { BlankLayoutComponent } from './shared/layouts/blank-layout/blank-layout.component';
-import { SidebarComponent } from './shared/sidebar/sidebar.component';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { PageLoaderComponent } from './shared/page-loader/page-loader.component';
-import { NavbarComponent } from './shared/navbar/navbar.component';
-import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule } from '@angular/material/card';
+import { RouterModule } from '@angular/router';
+import { SharedModule } from './shared/shared.module';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
-    FullLayoutComponent,
-    BlankLayoutComponent,
-    SidebarComponent,
-    PageLoaderComponent,
-    NavbarComponent
-  ],
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -35,13 +25,18 @@ import { MatCardModule } from '@angular/material/card';
     MatPaginatorModule,
     MatIconModule,
     BrowserAnimationsModule,
-    MatButtonModule, 
-    MatFormFieldModule, 
-    MatCardModule 
+    MatButtonModule,
+    MatFormFieldModule,
+    MatCardModule,
+    RouterModule,
+    SharedModule,
+    ToastrModule.forRoot({
+      timeOut: 4000, // 3 seconds duration
+      positionClass: 'toast-top-right', // Position of the toast
+      preventDuplicates: true, // Avoid duplicate toasts
+    })
   ],
-  providers: [
-    provideAnimationsAsync()
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
