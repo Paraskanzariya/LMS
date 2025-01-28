@@ -1,8 +1,10 @@
+/* General Page Styling */
 h2 {
     padding-top: 2%;
     padding-left: 6%;
 }
 
+/* Container Styling */
 .container {
     padding-top: 3%;
     display: flex;
@@ -11,6 +13,8 @@ h2 {
     text-align: center;
 }
 
+/* Box Styling */
+/* Box Styling */
 .box {
     padding-top: 1%;
     width: 140px;
@@ -21,22 +25,236 @@ h2 {
     /* Add margin between boxes */
     background-color: #e0f7fa;
     /* Set background color */
+    display: flex;
+    flex-direction: column;
+    /* Align items vertically (h3 on top, p below) */
+    justify-content: center;
+    /* Center content vertically */
+    align-items: center;
+    /* Center content horizontally */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.box h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    /* Add space between h3 and p */
+    text-align: center;
+    /* Center the text inside h3 */
+}
+
+.box p {
+    font-size: 0.9rem;
+    color: #333;
+    text-align: center;
+    /* Center the text inside p */
+}
+
+/* Status Classes */
 .active {
     color: rgb(27, 142, 187);
+    /* Blue for active status */
 }
 
 .risk {
     color: orange;
+    /* Orange for risk status */
 }
 
 .inactive {
     color: red;
+    /* Red for inactive status */
 }
 
+/* Table Container Styling */
 .table-container {
     width: 92%;
     margin: 3%;
     padding-left: 2%;
+    background: linear-gradient(135deg, #f3f6f9, #ffffff);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease;
+}
+
+/* Add New Loan Button */
+.addNewLoan {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+
+    .addloan {
+        display: flex;
+        align-items: center;
+        font-size: 16px;
+        background-color: #4caf50;
+        color: #fff;
+        padding: 10px 16px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+        &:hover {
+            background-color: #45a049;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
+
+        mat-icon {
+            margin-right: 8px;
+        }
+    }
+}
+
+/* Search Field Styling */
+.search-field {
+    width: 100%;
+    position: relative;
+    margin-bottom: 20px;
+
+    mat-icon {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #9e9e9e;
+    }
+
+    input {
+        width: 100%;
+        padding: 12px 12px 12px 40px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 14px;
+        transition: border-color 0.3s ease;
+
+        &:focus {
+            border-color: #4caf50;
+            outline: none;
+            box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
+        }
+    }
+}
+
+/* Table Styling */
+.table {
+    overflow-x: auto;
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+
+        th.mat-header-cell {
+            font-weight: bold;
+            background-color: #34495e;
+            color: #fff;
+            text-align: left;
+            padding: 12px;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: #2c3e50;
+            }
+        }
+
+        td.mat-cell {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            color: #333;
+        }
+
+        tr:hover td {
+            background-color: rgba(76, 175, 80, 0.1);
+            animation: rowHighlight 0.5s ease;
+        }
+    }
+}
+
+/* Delete Button Styling */
+button.mat-icon-button {
+    color: #e74c3c;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-color: rgba(231, 76, 60, 0.1);
+        transform: scale(1.1);
+    }
+}
+
+/* Paginator Styling */
+.mat-paginator {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+
+    .mat-paginator-range-label {
+        font-size: 14px;
+        color: #555;
+    }
+
+    .mat-paginator-icon {
+        color: #555;
+        transition: color 0.3s ease;
+
+        &:hover {
+            color: #4caf50;
+        }
+    }
+
+    button.mat-focus-indicator {
+        &:hover {
+            background-color: rgba(76, 175, 80, 0.1);
+        }
+    }
+}
+
+/* Page Loader Animation */
+app-page-loader {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+
+    .spinner {
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #3498db;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        animation: spin 1.2s linear infinite;
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes rowHighlight {
+    from {
+        background-color: transparent;
+    }
+
+    to {
+        background-color: rgba(76, 175, 80, 0.1);
+    }
 }
