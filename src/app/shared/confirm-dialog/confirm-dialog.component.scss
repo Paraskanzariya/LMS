@@ -1,0 +1,125 @@
+@use "sass:math";
+
+// Define variables for easier customization
+$primary-color: #00bcd4;
+$secondary-color: #0097a7;
+$danger-color: #ff4081;
+$dark-danger-color: #d81b60;
+$background-color: #ffffff;
+$border-color: #eeeeee;
+$shadow-color: rgba(0, 0, 0, 0.15);
+$text-color: #333;
+
+// Define the font-size mixin
+@mixin font-size($size) {
+    font-size: math.div($size, 16) + rem; // Convert to rem for better responsiveness
+}
+
+.dialog-container {
+    animation: slideUp 0.5s ease-out;
+    border-radius: 12px;
+    overflow: hidden;
+    padding: 0;
+}
+
+.dialog-title {
+    @include font-size(1.8rem);
+    font-weight: 700;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    background: #000000;
+    border-bottom: 3px solid #ffffff;
+    border-radius: 10px 10px 0 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+    font-family: 'Roboto', sans-serif;
+}
+
+.dialog-content {
+    @include font-size(1.2rem);
+    color: $text-color;
+    text-align: center;
+    padding: 30px;
+    line-height: 1.6;
+    background-color: $background-color;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    animation: slideUp 0.5s ease-out;
+    font-family: 'Roboto', sans-serif;
+}
+
+.dialog-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    background: #f9f9f9;
+    border-top: 3px solid $border-color;
+    border-radius: 0 0 10px 10px;
+}
+
+.mat-dialog-backdrop {
+    animation: backdropFadeIn 0.3s ease-out;
+}
+
+// Button styles
+.mat-button {
+    @include font-size(1.1rem);
+    padding: 12px 30px;
+    border-radius: 20px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    &.cancel-button {
+        background: linear-gradient(135deg, $primary-color, $secondary-color);
+        color: white;
+
+        &:hover {
+            background: linear-gradient(135deg, $secondary-color, $primary-color);
+            box-shadow: 0 5px 25px $shadow-color;
+            transform: translateY(-5px);
+        }
+    }
+
+    &.delete-button {
+        background: linear-gradient(135deg, $danger-color, $dark-danger-color);
+        color: white;
+
+        &:hover {
+            background: linear-gradient(135deg, $dark-danger-color, $danger-color);
+            box-shadow: 0 5px 25px $shadow-color;
+            transform: translateY(-5px);
+        }
+    }
+}
+
+// Animations
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes backdropFadeIn {
+    0% {
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+    100% {
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+}

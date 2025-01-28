@@ -1,0 +1,140 @@
+// Container Styling
+.add-customer-container {
+    max-width: 600px; // Set a maximum width for the form
+    margin: 40px auto; // Center the form horizontally and add vertical spacing
+    padding: 20px; // Add padding around the form
+    background: #ffffff; // White background for the form
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); // Subtle shadow for a card-like look
+    border-radius: 8px; // Rounded corners for a modern design
+    transform: translateY(-30px);
+    opacity: 0;
+    animation: fadeInUp 0.5s forwards ease-out; // Apply animation
+
+    h2 {
+        text-align: center; // Center align the title
+        font-size: 24px; // Slightly larger font size for the heading
+        font-weight: 600; // Bold font weight
+        color: #333; // Dark color for better readability
+        margin-bottom: 20px; // Add space below the heading
+        opacity: 0;
+        animation: fadeIn 1s forwards ease-in; // Title fade-in effect
+    }
+
+    // Material Form Fields
+    mat-form-field {
+        width: 100%; // Ensure all form fields take full width
+        margin-bottom: 20px; // Space between each field
+        opacity: 0;
+        animation: fadeInUp 0.5s forwards ease-out;
+        animation-delay: 0.2s; // Add delay to each form field for staggered animation
+    }
+
+    mat-label {
+        font-size: 14px; // Standard font size for labels
+        font-weight: 500; // Slightly bold font for better visibility
+        color: #666; // Neutral gray color for labels
+    }
+
+    mat-error {
+        font-size: 12px; // Smaller font size for error messages
+        color: #f44336; // Material design red for errors
+        margin-top: 4px; // Space above the error message
+    }
+
+    textarea {
+        resize: none; // Disable resizing for consistent design
+        min-height: 80px; // Set a minimum height for the textarea
+    }
+
+    // Action Buttons
+    .action-buttons {
+        display: flex; // Align buttons in a row
+        justify-content: space-between; // Space the buttons evenly
+        margin-top: 20px; // Add space above the buttons
+
+        button {
+            width: 48%; // Buttons take up equal width
+            font-size: 14px; // Standard font size for buttons
+            font-weight: 500; // Slightly bold font for better readability
+            text-transform: uppercase; // Uppercase text for consistency
+            transition: all 0.3s ease; // Smooth transition for hover effect
+
+            &:hover {
+                transform: translateY(-4px); // Slight lift on hover
+                box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2); // Subtle shadow effect on hover
+            }
+        }
+
+        button[color="primary"] {
+            background: #1976d2; // Material design blue for primary actions
+            color: #ffffff; // White text for contrast
+
+            &:hover {
+                background: #115293; // Darker blue for hover state
+            }
+
+            &:disabled {
+                background: #d3d3d3; // Light gray for disabled state
+                cursor: not-allowed; // Disable cursor on disabled button
+                box-shadow: none;
+            }
+        }
+
+        button[color="warn"] {
+            background: #d32f2f; // Material design red for cancel actions
+            color: #ffffff; // White text for contrast
+
+            &:hover {
+                background: #9a0007; // Darker red for hover state
+            }
+
+            &:disabled {
+                background: #d3d3d3; // Light gray for disabled state
+                cursor: not-allowed; // Disable cursor on disabled button
+                box-shadow: none;
+            }
+        }
+    }
+}
+
+// Animations
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+    .add-customer-container {
+        padding: 15px; // Reduce padding for smaller screens
+        margin: 20px; // Add spacing for smaller screens
+
+        h2 {
+            font-size: 20px; // Adjust heading size for smaller screens
+        }
+
+        .action-buttons {
+            flex-direction: column; // Stack buttons vertically
+
+            button {
+                width: 100%; // Buttons take full width on smaller screens
+                margin-bottom: 10px; // Add space between stacked buttons
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .add-customer-container {
+        margin: 10px; // Reduce margin for very small screens
+        padding: 10px; // Reduce padding for compact viewports
+    }
+}

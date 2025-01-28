@@ -9,6 +9,7 @@ import { PageLoaderComponent } from './page-loader/page-loader.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { MatIconModule } from '@angular/material/icon';
     NavbarComponent,
     PageLoaderComponent,
     SidebarComponent,
+    ConfirmDialogComponent,
   ],
   exports: [
     ButtonLoaderComponent,
@@ -31,6 +33,7 @@ import { MatIconModule } from '@angular/material/icon';
     NavbarComponent,
     PageLoaderComponent,
     SidebarComponent,
+    ConfirmDialogComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
