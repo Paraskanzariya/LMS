@@ -21,12 +21,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
+import { PaymentsComponent } from './payments/payments.component';
 
 @NgModule({
   declarations: [
     DashboardComponent,
     CustomersComponent,
-    AddCustomersComponent, // Add customer-related components
+    AddCustomersComponent,
+    PaymentsComponent, // Add customer-related components
   ],
   imports: [
     CommonModule, // Use CommonModule for directives like NgIf, NgFor

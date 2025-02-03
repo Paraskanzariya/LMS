@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router'; // Import Router for navigation
 
 @Component({
   selector: 'app-sidebar',
@@ -10,7 +11,7 @@ export class SidebarComponent implements OnInit {
   menuItems = [
     { label: 'Dashboard', icon: 'home', link: '/dashboard' },
     { label: 'Customers', icon: 'group', link: '/customer' },
-    { label: 'Payments', icon: 'payments', link: '/payments' },
+    { label: 'Payments', icon: 'payments', link: '/payment' },
     { label: 'Invoices', icon: 'receipt', link: '/invoices' },
     { label: 'Loan Plans', icon: 'attach_money', link: '/loan-plans' },
     { label: 'Loans', icon: 'monetization_on', link: '/loans' },
@@ -18,7 +19,7 @@ export class SidebarComponent implements OnInit {
     { label: 'Settings', icon: 'settings', link: '/settings' }
   ];
 
-  constructor() { }
+  constructor(private router: Router) { } // Inject Router service
 
   ngOnInit(): void { }
 
@@ -38,5 +39,10 @@ export class SidebarComponent implements OnInit {
       sidebar?.style.setProperty('width', '70px');
       mainPanel?.style.setProperty('margin-left', '70px');
     }
+  }
+
+  // Navigate to the Dashboard when logo is clicked
+  navigateToDashboard(): void {
+    this.router.navigate(['/dashboard']);
   }
 }
