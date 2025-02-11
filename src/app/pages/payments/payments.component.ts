@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { PaymentsService } from './payments.service';
 import { ConfirmDialogComponent } from '../../shared/confirm-dialog/confirm-dialog.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-payments',
@@ -75,23 +76,38 @@ export class PaymentsComponent implements OnInit, AfterViewInit {
   }
 
   deletePayment(payment: any): void {
-    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      data: { title: 'Delete Payment?', message: 'Are you sure you want to delete this payment?' }
-    });
-
-    dialogRef.afterClosed().subscribe((result: boolean) => {
-      if (result) {
+    Swal.fire({
+      title: 'Delete Payment?',
+      text: 'Are you sure you want to delete this payment?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'No'
+    }).then((result) => {
+      if (result.isConfirmed) {
         this.isLoading = true;
 
         // Call API to delete payment
         this.paymentsService.deletePayment(payment.paymentId).subscribe({
           next: () => {
             this.dataSource.data = this.dataSource.data.filter(p => p.paymentId !== payment.paymentId);
-            this.toastr.success('Payment deleted successfully!', 'Success');
+            Swal.fire({
+              title: 'Deleted!',
+              text: 'Payment has been deleted.',
+              icon: 'success',
+              timer: 1500,
+              showConfirmButton: false
+            });
             this.isLoading = false;
           },
           error: () => {
-            this.toastr.error('Failed to delete payment', 'Error');
+            Swal.fire({
+              title: 'Error',
+              text: 'Failed to delete payment',
+              icon: 'error',
+              timer: 1500,
+              showConfirmButton: false
+            });
             this.isLoading = false;
           }
         });

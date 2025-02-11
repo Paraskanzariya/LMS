@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../shared/confirm-dialog/confirm-dialog.component';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-customers',
@@ -66,26 +68,36 @@ export class CustomersComponent implements OnInit {
   }
 
   deleteCustomer(customer: any): void {
-    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      data: { title: 'Delete Customer?', message: 'Are you sure you want to delete this customer?' }
-    });
-
-    dialogRef.afterClosed().subscribe((result: boolean) => {
-      if (result) {
+    Swal.fire({
+      title: 'Delete Customer?',
+      text: 'Are you sure you want to delete this customer?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'No',
+      customClass: {
+        confirmButton: 'swal-wide-button',
+        cancelButton: 'swal-wide-button'
+      }
+    }).then((result) => {
+      if (result.isConfirmed) {
         this.isLoading = true;
 
-        // Simulate API call to delete customer (replace with actual API call)
         setTimeout(() => {
-          const index = this.dataSource.data.indexOf(customer);
-          if (index > -1) {
-            const updatedData = [...this.dataSource.data];
-            updatedData.splice(index, 1);
-            this.dataSource.data = updatedData;
-          }
+          // Simulate customer deletion (replace with actual API call)
           this.isLoading = false;
-          this.toastr.success('Customer deleted successfully!', 'Success');
+          Swal.fire({
+            title: 'Deleted!',
+            text: 'Customer has been deleted.',
+            icon: 'success',
+            timer: 2000,
+            showConfirmButton: false
+          });
         }, 1000);
       }
     });
   }
+
 }

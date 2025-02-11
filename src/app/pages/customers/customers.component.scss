@@ -148,6 +148,14 @@ button.mat-icon-button {
   }
 }
 
+.swal-wide-button {
+  width: 200px; // Increase button width
+  height: 50px; // Optional: Increase button height
+  font-size: 16px; // Optional: Adjust font size
+  border-radius: 8px; // Optional: Add rounded corners
+  padding: 10px;
+}
+
 /* Page Loader Animation */
 app-page-loader {
   display: block;
