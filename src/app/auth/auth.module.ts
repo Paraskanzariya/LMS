@@ -6,9 +6,10 @@ import { AuthRoutes } from './auth.routing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
-  declarations: [LoginComponent, ResetPasswordComponent],
+  declarations: [LoginComponent, ResetPasswordComponent, SignupComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(AuthRoutes),
